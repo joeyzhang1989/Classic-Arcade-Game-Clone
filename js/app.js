@@ -4,8 +4,7 @@ var Enemy = function(x,y) {
     // we've provided one for you to get started
     this.x = x;
     this.y = y;
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
+    // The image/sprite for our enemies, this uses a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -15,13 +14,25 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x = this.x * dt;
+   if (this.x < 505) {
+        if (this.y < 100) {
+            this.x += 200 * dt;
+        }
+        if (this.y < 200) {
+            this.x += 300 * dt;
+        }
+        if (this.y >= 200) {
+            this.x += 400 * dt;
+        }
+   }
+   else {
+    this.x = 0;
+   }
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    console.log("enemy");
 };
 
 // Player character who tries to avoid the enemies to reach the water
@@ -29,19 +40,32 @@ var Player = function (x,y) {
     this.x = x;
     this.y = y;
     this.sprite = 'images/char-boy.png';
-
 };
 
+//Update the player position 
 Player.prototype.update = function (dt) {
+
 };
 //Draw the Player on the screen
 Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    console.log("player");
 };
 
-Player.prototype.handleInput = function () {
-
+//Handle the keyboard inputs from the item of the array allowedKeys[e.keyCode]
+Player.prototype.handleInput = function (key) {
+    this.key = key;
+    if (this.key = 'left') {
+        this.x -= 99;
+    } 
+    if (this.key = 'right') {
+        this.x +=99;
+    } 
+    if (this.key = 'up') {
+        this.y += 171;
+    } 
+    if (this.key = 'down') {
+        this.y -= 171;
+    }
 };
 // This class requires an update(), render() and
 // a handleInput() method.
@@ -69,5 +93,5 @@ document.addEventListener('keyup', function(e) {
         40: 'down'
     };
 
-    // player.handleInput(allowedKeys[e.keyCode]);
+     player.handleInput(allowedKeys[e.keyCode]);
 });
