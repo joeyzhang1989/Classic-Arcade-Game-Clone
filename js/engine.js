@@ -23,8 +23,16 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        lastTime;
+        lastTime,
+        points = 0,
+        pointsNow = 0,
+        life = 5,
+        lifeNow = 0,
+        HTMLlife = '<span class="lifeCount">%data</span>',
+        HTMLpoints = '<span class="ponitCount">%data</span>';
 
+    lifeNow = life;
+    pointsNow = points;
     canvas.width = 505;
     canvas.height = 606;
     doc.body.appendChild(canvas);
@@ -63,6 +71,10 @@ var Engine = (function(global) {
      * game loop.
      */
     function init() {
+        HTMLlife = HTMLlife.replace('%data',life);
+        HTMLpoints = HTMLpoints.replace('%data',points);
+        $('.lifeCount').append(HTMLlife);
+        $('.ponitCount').append(HTMLpoints);
         reset();
         lastTime = Date.now();
         main();
@@ -84,8 +96,21 @@ var Engine = (function(global) {
        if (Math.abs(enemy.x - player.xNow) < 20 && Math.abs(enemy.y - player.yNow) < 30) {
             player.x = 200;
             player.y = 400;
+            if (lifeNow > 0) {
+                 lifeNow -= 1;
+                 $('.lifeCount').text(lifeNow)
+            }
         }
-      });           
+      });   
+
+      allGems.forEach(function(gem) {
+       if (Math.abs(gem.x - player.xNow) < 20 && Math.abs(gem.y - player.yNow) < 30) { 
+             pointsNow += 100;
+             $('.ponitCount').text(pointsNow)
+             console.log(gem.sprites[gem.id]);
+             ctx.clearRect(0, 0, gem.width, gem.height);
+        }
+      });                
     }
     /* This is called by the update function and loops through all of the
      * objects within your allEnemies array as defined in app.js and calls
@@ -168,7 +193,7 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        // noop
+        
     }
 
     /* Go ahead and load all of the images we know we're going to need to

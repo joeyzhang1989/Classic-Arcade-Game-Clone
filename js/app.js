@@ -37,6 +37,8 @@ var Gem = function (x,y,id) {
     this.x = x;
     this.y = y;
     this.id = id;
+    this.width = 50;
+    this.height = 50;
     this.sprites = ["images/Gem-Blue.png","images/Gem-Green.png","images/Gem-Orange.png"];
 };
 
@@ -108,9 +110,9 @@ var allEnemies = [];
 allEnemies.push(bugFirst,bugSecond,bugThird);
 
 // Now instantiate enemies' objects.
-var firstGem = new Gem(200,65,0);
+var firstGem = new Gem(405,65,0);
 var secondGem = new Gem(100,140,1);
-var thirdGem = new Gem(200,220,2);
+var thirdGem = new Gem(305,220,2);
 // Place all gem objects in an array called allGems
 var allGems = [];
 allGems.push(firstGem,secondGem,thirdGem);
@@ -129,3 +131,14 @@ document.addEventListener('keyup', function(e) {
     };
      player.handleInput(allowedKeys[e.keyCode]);
 });
+
+// //This listens for the mouse click and send to player.characterSelect() method
+// document.addEventListener('keyup', function(e) {
+//     var allowedKeys = {
+//         37: 'left',
+//         38: 'up',
+//         39: 'right',
+//         40: 'down'
+//     };
+//      player.handleInput(allowedKeys[e.keyCode]);
+// });
