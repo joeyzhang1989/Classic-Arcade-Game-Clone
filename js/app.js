@@ -33,17 +33,16 @@ Enemy.prototype.render = function() {
 };
 
 // Gem object for the player to collect
-var Gem = function (x,y) {
+var Gem = function (x,y,id) {
     this.x = x;
     this.y = y;
+    this.id = id;
     this.sprites = ["images/Gem-Blue.png","images/Gem-Green.png","images/Gem-Orange.png"];
 };
 
 // Render the gem on the canvas accroding to the different position
-Gem.prototype.render = function() {
-    var i  = Math.floor(Math.random() * 3);
-        console.log(i);
-    ctx.drawImage(Resources.get(this.sprites[i]), this.x, this.y);
+Gem.prototype.render = function() {  
+    ctx.drawImage(Resources.get(this.sprites[this.id]), this.x, this.y);
 };
 
 //Update the Gem position due to the certain time interval
@@ -109,9 +108,9 @@ var allEnemies = [];
 allEnemies.push(bugFirst,bugSecond,bugThird);
 
 // Now instantiate enemies' objects.
-var firstGem = new Gem(200,65);
-var secondGem = new Gem(100,140);
-var thirdGem = new Gem(200,220);
+var firstGem = new Gem(200,65,0);
+var secondGem = new Gem(100,140,1);
+var thirdGem = new Gem(200,220,2);
 // Place all gem objects in an array called allGems
 var allGems = [];
 allGems.push(firstGem,secondGem,thirdGem);
