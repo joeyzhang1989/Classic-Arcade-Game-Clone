@@ -28,14 +28,19 @@ p {
 	left: 0; 
 	right: 0;
 	position: relative;
-	width: 300px;
-	height: 50px;
-	margin: 70px auto;
+	width: 250px;
+	height: 80px;
+	margin: 70px auto 0 auto;
+}
+
+.audio {
+	width: 250px;
+	height: 40px;
 }
 
 .gameTitle {
 	font-size: 24px;
-	width: 130px;
+	float: left;
 	color: #ffffff;
 }
 
@@ -49,7 +54,21 @@ p {
 	height: 50px;
 }
 
+.clear-fix {
+    overflow: auto;
+}
+
 .musicBanner {
 	font-size: 16px;
 	color: #ffffff;
+}
+
+.char {
+	width: 505px;
+	margin: 0 auto;
+}
+
+.playerImg {
+	width: 80px;
+	height: 80px;
 }

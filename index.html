@@ -10,8 +10,16 @@
     <script src="js/jQuery.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
+    <script>
+    	$( "img.playerImg").hover(
+    	function () {
+         	$( this ).fadeOut( 100 );
+  			$( this ).fadeIn( 500 );
+   		 }
+		);
+    </script>
 
-    <footer class="info container">
+    <footer class="info container clear-fix">
     	<h1 class="gameTitle item">Frogg Game</h1>
     	<img class="life item" src="images/Heart.png"></img>
     	<p class="item lifeCount"></p>
@@ -20,10 +28,17 @@
     </footer>
     <div class="backgroundMusic">
     	 <span class="musicBanner">Background Music</span>
-    	 <audio controls="controls">
+    	 <audio class="audio" controls="controls">
 		 <source src="audio/background.ogg" type="audio/ogg" /> 
 		 <source src="audio/background.wav" type="audio/wav" />
 		 </audio>
+    </div>
+    <div class=" char container">
+    	<img class="playerImg item" src="images/char-boy.png">
+    	<img class="playerImg item" src="images/char-cat-girl.png">
+    	<img class="playerImg item" src="images/char-horn-girl.png">
+    	<img class="playerImg item" src="images/char-pink-girl.png">
+    	<img class="playerImg item" src="images/char-princess-girl.png">
     </div>
 </body>
 </html>

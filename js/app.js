@@ -132,13 +132,3 @@ document.addEventListener('keyup', function(e) {
      player.handleInput(allowedKeys[e.keyCode]);
 });
 
-// //This listens for the mouse click and send to player.characterSelect() method
-// document.addEventListener('keyup', function(e) {
-//     var allowedKeys = {
-//         37: 'left',
-//         38: 'up',
-//         39: 'right',
-//         40: 'down'
-//     };
-//      player.handleInput(allowedKeys[e.keyCode]);
-// });
