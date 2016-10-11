@@ -22,12 +22,20 @@ p {
 	width: 505px;
 	height: 60px;
 	margin: 0 auto;
-	/*margin: 614px auto 0 auto;*/
+}
+
+.backgroundMusic {
+	left: 0; 
+	right: 0;
+	position: relative;
+	width: 300px;
+	height: 50px;
+	margin: 70px auto;
 }
 
 .gameTitle {
 	font-size: 24px;
-	width: 150px;
+	width: 130px;
 	color: #ffffff;
 }
 
@@ -39,4 +47,9 @@ p {
 .points {
 	width: 50px;
 	height: 50px;
+}
+
+.musicBanner {
+	font-size: 16px;
+	color: #ffffff;
 }
