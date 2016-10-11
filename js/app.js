@@ -1,17 +1,14 @@
 // Enemies our player must avoid
 var Enemy = function(x,y) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
     this.x = x;
     this.y = y;
-    // The image/sprite for our enemies, this uses a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
+    // Multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
    if (this.x < 505) {
@@ -35,6 +32,24 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+// Gem object for the player to collect
+var Gem = function (x,y) {
+    this.x = x;
+    this.y = y;
+    this.sprites = ["images/Gem-Blue.png","images/Gem-Green.png","images/Gem-Orange.png"];
+};
+
+// Render the gem on the canvas accroding to the different position
+Gem.prototype.render = function() {
+    var i  = Math.floor(Math.random() * 3);
+        console.log(i);
+    ctx.drawImage(Resources.get(this.sprites[i]), this.x, this.y);
+};
+
+//Update the Gem position due to the certain time interval
+Gem.prototype.update = function (dt) {
+
+};
 // Player character who tries to avoid the enemies to reach the water
 var Player = function (x,y) {
     this.x = x;
@@ -92,12 +107,20 @@ var bugThird = new Enemy(0,220);
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
 allEnemies.push(bugFirst,bugSecond,bugThird);
+
+// Now instantiate enemies' objects.
+var firstGem = new Gem(200,65);
+var secondGem = new Gem(100,140);
+var thirdGem = new Gem(200,220);
+// Place all gem objects in an array called allGems
+var allGems = [];
+allGems.push(firstGem,secondGem,thirdGem);
+
 // Place the player object in a variable called player
 var player = new Player(200,400);
 
-
 // This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+// Player.handleInput() method.
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',

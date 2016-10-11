@@ -69,25 +69,23 @@ var Engine = (function(global) {
     }
 
     /* This function is called by main (our game loop) and itself calls all
-     * of the functions which may need to update entity's data. Based on how
-     * you implement your collision detection (when two entities occupy the
-     * same space, for instance when your character should die), you may find
-     * the need to add an additional function call here. For now, we've left
-     * it commented out - you may or may not want to implement this
-     * functionality this way (you could just implement collision detection
-     * on the entities themselves within your app.js file).
+     * of the functions which may need to update entity's data. 
      */
     function update(dt) {
         updateEntities(dt);
         checkCollisions();
     }
+     /* This function is called by main to detect if player has collided 
+     *  the gem object or the enemy object to reset the position of the player 
+     *  or update the player related properties 
+     */
     function checkCollisions () {
-           allEnemies.forEach(function(enemy) {
-           if (Math.abs(enemy.x - player.xNow) < 20 && Math.abs(enemy.y - player.yNow) < 30) {
-                player.x = 200;
-                player.y = 400;
-            }
-        });           
+       allEnemies.forEach(function(enemy) {
+       if (Math.abs(enemy.x - player.xNow) < 20 && Math.abs(enemy.y - player.yNow) < 30) {
+            player.x = 200;
+            player.y = 400;
+        }
+      });           
     }
     /* This is called by the update function and loops through all of the
      * objects within your allEnemies array as defined in app.js and calls
@@ -99,6 +97,9 @@ var Engine = (function(global) {
     function updateEntities(dt) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
+        });
+        allGems.forEach(function(gem) {
+            gem.update(dt);
         });
         player.update();
     }
@@ -156,6 +157,9 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.render();
         });
+        allGems.forEach(function(gem) {
+            gem.render();
+        });
         player.render();
     }
 
@@ -176,7 +180,10 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/Gem-Blue.png',
+        'images/Gem-Green.png',
+        'images/Gem-Orange.png'
     ]);
     Resources.onReady(init);
 
