@@ -48,12 +48,12 @@ var Player = function (x,y) {
 Player.prototype.update = function () {
     this.xNow = this.x;
     this.yNow = this.y;
-
 };
 //Draw the Player on the screen
 Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.xNow, this.yNow);
 };
+
 
 //Handle the keyboard inputs from the item of the array allowedKeys[e.keyCode]
 Player.prototype.handleInput = function (key) {
@@ -72,13 +72,13 @@ Player.prototype.handleInput = function (key) {
     } 
     // player up move
     if (this.key === "up") {
-        if (this.y - 90 > 0) {
+        if (this.y - 92 > 0) {
              this.y -= 90;
         }
     } 
     //player down move
     if (this.key === "down") {
-        if (this.y +90 < 480) {
+        if (this.y + 92 < 480) {
              this.y += 90;
         }
     }

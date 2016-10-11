@@ -79,9 +79,16 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
     }
-
+    function checkCollisions () {
+           allEnemies.forEach(function(enemy) {
+           if (Math.abs(enemy.x - player.xNow) < 20 && Math.abs(enemy.y - player.yNow) < 30) {
+                player.x = 200;
+                player.y = 400;
+            }
+        });           
+    }
     /* This is called by the update function and loops through all of the
      * objects within your allEnemies array as defined in app.js and calls
      * their update() methods. It will then call the update function for your
@@ -149,7 +156,6 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.render();
         });
-
         player.render();
     }
 
