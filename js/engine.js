@@ -100,6 +100,9 @@ var Engine = (function(global) {
                  lifeNow -= 1;
                  $('.lifeCount').text(lifeNow)
             }
+            else {
+                
+            }
         }
       });   
 
@@ -107,8 +110,10 @@ var Engine = (function(global) {
        if (Math.abs(gem.x - player.xNow) < 20 && Math.abs(gem.y - player.yNow) < 30) { 
              pointsNow += 100;
              $('.ponitCount').text(pointsNow)
-             console.log(gem.sprites[gem.id]);
-             ctx.clearRect(0, 0, gem.width, gem.height);
+             var index = allGems.indexOf(gem);
+             if (index > -1) {
+                allGems.splice(index, 1);
+            }
         }
       });                
     }
