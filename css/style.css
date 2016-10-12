@@ -72,3 +72,14 @@ p {
 	width: 80px;
 	height: 80px;
 }
+
+.gameover {
+	font-size: 48px;
+	color: #ffffff;
+}
+
+.reStart {
+	width: 180px;
+	height: 180px;
+	font-size: 24px;
+}

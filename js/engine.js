@@ -100,8 +100,8 @@ var Engine = (function(global) {
                  lifeNow -= 1;
                  $('.lifeCount').text(lifeNow)
             }
-            else {
-
+            if (lifeNow === 0) {
+                win.open('gameover.html','_self');
             }
         }
       });   
@@ -198,7 +198,7 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        
+
     }
 
     /* Go ahead and load all of the images we know we're going to need to
@@ -214,6 +214,10 @@ var Engine = (function(global) {
         'images/Gem-Blue.png',
         'images/Gem-Green.png',
         'images/Gem-Orange.png',
+        'images/char-cat-girl.png',
+        'images/char-horn-girl.png',
+        'images/char-pink-girl.png',
+        'images/char-princess-girl.png',
     ]);
     Resources.onReady(init);
 
