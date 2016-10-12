@@ -81,15 +81,15 @@ var Engine = (function(global) {
     }
 
     /* This function is called by main (our game loop) and itself calls all
-     * of the functions which may need to update entity's data. 
+     * of the functions which may need to update entity's data.
      */
     function update(dt) {
         updateEntities(dt);
         checkCollisions();
     }
-     /* This function is called by main to detect if player has collided 
-     *  the gem object or the enemy object to reset the position of the player 
-     *  or update the player related properties 
+     /* This function is called by main to detect if player has collided
+     *  the gem object or the enemy object to reset the position of the player
+     *  or update the player related properties
      */
     function checkCollisions () {
        allEnemies.forEach(function(enemy) {
@@ -98,24 +98,24 @@ var Engine = (function(global) {
             player.y = 400;
             if (lifeNow > 0) {
                  lifeNow -= 1;
-                 $('.lifeCount').text(lifeNow)
+                 $('.lifeCount').text(lifeNow);
             }
             if (lifeNow === 0) {
                 win.open('gameover.html','_self');
             }
         }
-      });   
+      });
 
       allGems.forEach(function(gem) {
-       if (Math.abs(gem.x - player.xNow) < 20 && Math.abs(gem.y - player.yNow) < 30) { 
+       if (Math.abs(gem.x - player.xNow) < 20 && Math.abs(gem.y - player.yNow) < 30) {
              pointsNow += 100;
-             $('.ponitCount').text(pointsNow)
+             $('.ponitCount').text(pointsNow);
              var index = allGems.indexOf(gem);
              if (index > -1) {
                 allGems.splice(index, 1);
             }
         }
-      });                
+      });
     }
     /* This is called by the update function and loops through all of the
      * objects within your allEnemies array as defined in app.js and calls

@@ -43,7 +43,7 @@ var Gem = function (x,y,id) {
 };
 
 // Render the gem on the canvas accroding to the different position
-Gem.prototype.render = function() {  
+Gem.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprites[this.id]), this.x, this.y);
 };
 
@@ -60,7 +60,7 @@ var Player = function (x,y) {
     this.yNow = y;
 };
 
-//Update the player position 
+//Update the player position
 Player.prototype.update = function () {
     this.xNow = this.x;
     this.yNow = this.y;
@@ -79,13 +79,13 @@ Player.prototype.handleInput = function (key) {
         if (this.x - 98 > 0) {
             this.x -= 98;
         }
-    } 
+    }
     // player right move
     if  (this.key === "right") {
         if (this.x + 98 < 460) {
-            this.x += 98;  
+            this.x += 98;
         }
-    } 
+    }
     // player up move
     if (this.key === "up") {
         if (this.y - 92 > 0) {
@@ -95,7 +95,7 @@ Player.prototype.handleInput = function (key) {
             this.x = 200;
             this.y = 400;
         }
-    } 
+    }
     //player down move
     if (this.key === "down") {
         if (this.y + 92 < 480) {
@@ -144,42 +144,38 @@ $( document ).ready(function() {
     var fifth = document.getElementById("fifth");
 
     // select first player image to change the player character
-    first.addEventListener('click', function( event ) {   
+    first.addEventListener('click', function( event ) {
         // highlight the mouse click target
         event.stopPropagation();
-        player.sprite = 'images/char-boy.png'
+        player.sprite = 'images/char-boy.png';
      }, false);
 
      // select second player image to change the player character
-    second.addEventListener('click', function( event ) {   
+    second.addEventListener('click', function( event ) {
         // highlight the mouse click target
         event.stopPropagation();
-        player.sprite = 'images/char-cat-girl.png'
+        player.sprite = 'images/char-cat-girl.png';
      }, false);
 
      // select third player image to change the player character
-      third.addEventListener('click', function( event ) {   
+      third.addEventListener('click', function( event ) {
         // highlight the mouse click target
         event.stopPropagation();
-        player.sprite = 'images/char-horn-girl.png'
+        player.sprite = 'images/char-horn-girl.png';
      }, false);
 
        // select forth player image to change the player character
-    forth.addEventListener('click', function( event ) {   
+    forth.addEventListener('click', function( event ) {
         // highlight the mouse click target
         event.stopPropagation();
-        player.sprite = 'images/char-pink-girl.png'
+        player.sprite = 'images/char-pink-girl.png';
      }, false);
 
      // select fifth player image to change the player character
-    fifth.addEventListener('click', function( event ) {   
+    fifth.addEventListener('click', function( event ) {
         // highlight the mouse click target
         event.stopPropagation();
-        player.sprite = 'images/char-princess-girl.png'
+        player.sprite = 'images/char-princess-girl.png';
      }, false);
 
 });
-
-
-
-
