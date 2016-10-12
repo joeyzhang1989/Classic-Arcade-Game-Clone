@@ -1,3 +1,96 @@
 body {
     text-align: center;
+    background-color: #000000;
+}
+
+p {
+	color: #ffffff;
+}
+.container {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-flex: nowrap;
+	    -ms-flex: nowrap;
+	        -ms-flex-wrap: nowrap;
+	            flex-wrap: nowrap;
+	-ms-flex-pack: distribute;
+	    justify-content: space-around;
+	-webkit-box-align: start;
+	    -ms-flex-align: start;
+	        align-items: flex-start
+}
+
+.info {
+	position: absolute;
+	left: 0;
+	right: 0;
+	border: 1px solid #ffffff;
+	width: 505px;
+	height: 60px;
+	margin: 0 auto;
+}
+
+.backgroundMusic {
+	left: 0;
+	right: 0;
+	position: relative;
+	width: 250px;
+	height: 80px;
+	margin: 70px auto 0 auto;
+}
+
+.audio {
+	width: 250px;
+	height: 40px;
+}
+
+.gameTitle {
+	font-size: 24px;
+	float: left;
+	color: #ffffff;
+}
+
+.life {
+	width: 50px;
+	height: 50px;
+}
+
+.points {
+	width: 50px;
+	height: 50px;
+}
+
+.clear-fix {
+    overflow: auto;
+}
+
+.musicBanner {
+	font-size: 16px;
+	color: #ffffff;
+}
+
+.char {
+	width: 505px;
+	margin: 0 auto;
+}
+
+.playerImg {
+	width: 80px;
+	height: 80px;
+}
+
+.gameover {
+	font-size: 48px;
+	color: #ffffff;
+}
+
+.reStart {
+	width: 180px;
+	height: 180px;
+	font-size: 24px;
 }

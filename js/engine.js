@@ -23,8 +23,16 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        lastTime;
+        lastTime,
+        points = 0,
+        pointsNow = 0,
+        life = 5,
+        lifeNow = 0,
+        HTMLlife = '<span class="lifeCount">%data</span>',
+        HTMLpoints = '<span class="ponitCount">%data</span>';
 
+    lifeNow = life;
+    pointsNow = points;
     canvas.width = 505;
     canvas.height = 606;
     doc.body.appendChild(canvas);
@@ -41,7 +49,6 @@ var Engine = (function(global) {
          */
         var now = Date.now(),
             dt = (now - lastTime) / 1000.0;
-
         /* Call our update/render functions, pass along the time delta to
          * our update function since it may be used for smooth animation.
          */
@@ -64,25 +71,52 @@ var Engine = (function(global) {
      * game loop.
      */
     function init() {
+        HTMLlife = HTMLlife.replace('%data',life);
+        HTMLpoints = HTMLpoints.replace('%data',points);
+        $('.lifeCount').append(HTMLlife);
+        $('.ponitCount').append(HTMLpoints);
         reset();
         lastTime = Date.now();
         main();
     }
 
     /* This function is called by main (our game loop) and itself calls all
-     * of the functions which may need to update entity's data. Based on how
-     * you implement your collision detection (when two entities occupy the
-     * same space, for instance when your character should die), you may find
-     * the need to add an additional function call here. For now, we've left
-     * it commented out - you may or may not want to implement this
-     * functionality this way (you could just implement collision detection
-     * on the entities themselves within your app.js file).
+     * of the functions which may need to update entity's data.
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
     }
+     /* This function is called by main to detect if player has collided
+     *  the gem object or the enemy object to reset the position of the player
+     *  or update the player related properties
+     */
+    function checkCollisions () {
+       allEnemies.forEach(function(enemy) {
+       if (Math.abs(enemy.x - player.xNow) < 20 && Math.abs(enemy.y - player.yNow) < 30) {
+            player.x = 200;
+            player.y = 400;
+            if (lifeNow > 0) {
+                 lifeNow -= 1;
+                 $('.lifeCount').text(lifeNow);
+            }
+            if (lifeNow === 0) {
+                win.open('gameover.html','_self');
+            }
+        }
+      });
 
+      allGems.forEach(function(gem) {
+       if (Math.abs(gem.x - player.xNow) < 20 && Math.abs(gem.y - player.yNow) < 30) {
+             pointsNow += 100;
+             $('.ponitCount').text(pointsNow);
+             var index = allGems.indexOf(gem);
+             if (index > -1) {
+                allGems.splice(index, 1);
+            }
+        }
+      });
+    }
     /* This is called by the update function and loops through all of the
      * objects within your allEnemies array as defined in app.js and calls
      * their update() methods. It will then call the update function for your
@@ -93,6 +127,9 @@ var Engine = (function(global) {
     function updateEntities(dt) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
+        });
+        allGems.forEach(function(gem) {
+            gem.update(dt);
         });
         player.update();
     }
@@ -150,7 +187,9 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.render();
         });
-
+        allGems.forEach(function(gem) {
+            gem.render();
+        });
         player.render();
     }
 
@@ -159,7 +198,7 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        // noop
+
     }
 
     /* Go ahead and load all of the images we know we're going to need to
@@ -171,7 +210,14 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/Gem-Blue.png',
+        'images/Gem-Green.png',
+        'images/Gem-Orange.png',
+        'images/char-cat-girl.png',
+        'images/char-horn-girl.png',
+        'images/char-pink-girl.png',
+        'images/char-princess-girl.png',
     ]);
     Resources.onReady(init);
 
