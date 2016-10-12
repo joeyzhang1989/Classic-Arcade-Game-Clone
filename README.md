@@ -1,6 +1,37 @@
-Frontend-nanodegree-arcade-game
-===============================
+#Classic Arcade Game Clone
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+######Project Overview
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+Project #3 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001). The task was to recreate the classic arcade game [Frogger]with provided visual assets and a game loop engine by 
+**1.**Implementing the player and enemy entities using **Pseudoclassical Classes Pattern** 
+**2.** Adding the correspoding code to support the additional functions
+
+##Getting Started
+
+######Locally
+
+**1.** Clone this repo:
+
+```
+$ git clone https://github.com/mikejoyceio/arcade-game
+````
+
+**2.** Serve the application:
+
+```
+$ python -m SimpleHTTPServer
+```
+
+Detailed Python Simple Server instructions can been found [here](https://docs.python.org/2/library/basehttpserver.html).
+
+**3.** Open the application:
+
+```
+$ open "http://localhost:8000"
+```
+
+##Resources
+
+######Package Management
+
+
