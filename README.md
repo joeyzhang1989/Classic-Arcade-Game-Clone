@@ -8,9 +8,6 @@ Project #3 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 **2.** Adding the correspoding code to support the additional functions
 
 ##How to use
-###Live
-
-
 
 ###Locally
 
